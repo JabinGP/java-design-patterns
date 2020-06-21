@@ -19,6 +19,9 @@ import org.jabingp.command.HelpCommand;
 import org.jabingp.iterator.AbstractIterator;
 import org.jabingp.iterator.AbstractProductList;
 import org.jabingp.iterator.ProductList;
+import org.jabingp.observer.ConcreteInvestor;
+import org.jabingp.observer.Investor;
+import org.jabingp.observer.Stock;
 
 /**
  * Unit test for simple App.
@@ -99,5 +102,19 @@ public class AppTest {
         }
 
         assertTrue(true);
+    }
+
+    @Test
+    public void testInvestor() {
+        Investor inv1, inv2;
+
+        inv1 = new ConcreteInvestor("杨过");
+        inv2 = new ConcreteInvestor("小龙女");
+
+        Stock haier = new Stock("青岛海尔", 20.00);
+        haier.attach(inv1);
+        haier.attach(inv2);
+
+        haier.setPrice(25.00);
     }
 }
