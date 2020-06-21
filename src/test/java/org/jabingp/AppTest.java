@@ -19,6 +19,11 @@ import org.jabingp.command.HelpCommand;
 import org.jabingp.iterator.AbstractIterator;
 import org.jabingp.iterator.AbstractProductList;
 import org.jabingp.iterator.ProductList;
+import org.jabingp.mediator.Button;
+import org.jabingp.mediator.ComboBox;
+import org.jabingp.mediator.ConcreteMediator;
+import org.jabingp.mediator.List;
+import org.jabingp.mediator.TextBox;
 import org.jabingp.observer.ConcreteInvestor;
 import org.jabingp.observer.Investor;
 import org.jabingp.observer.Stock;
@@ -116,5 +121,30 @@ public class AppTest {
         haier.attach(inv2);
 
         haier.setPrice(25.00);
+    }
+
+    @Test
+    public void testMediator() {
+        ConcreteMediator mediator;
+        mediator = new ConcreteMediator();
+
+        Button addBT = new Button();
+        List list = new List();
+        ComboBox cb = new ComboBox();
+        TextBox userNameTB = new TextBox();
+
+        addBT.setMediator(mediator);
+        list.setMediator(mediator);
+        cb.setMediator(mediator);
+        userNameTB.setMediator(mediator);
+
+        mediator.addButton = addBT;
+        mediator.list = list;
+        mediator.cb = cb;
+        mediator.userNameTextBox = userNameTB;
+
+        addBT.change();
+        System.out.println("-----------------------------");
+        list.change();
     }
 }
