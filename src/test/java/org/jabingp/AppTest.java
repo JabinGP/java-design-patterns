@@ -16,6 +16,9 @@ import org.jabingp.command.Command;
 import org.jabingp.command.ExitCommand;
 import org.jabingp.command.FunctionButton;
 import org.jabingp.command.HelpCommand;
+import org.jabingp.iterator.AbstractIterator;
+import org.jabingp.iterator.AbstractProductList;
+import org.jabingp.iterator.ProductList;
 
 /**
  * Unit test for simple App.
@@ -69,6 +72,31 @@ public class AppTest {
 
         fb1.click();
         fb2.click();
+
+        assertTrue(true);
+    }
+
+    @Test
+    public void testIterator() {
+        String[] pNames = { "ThinkPad电脑", "Tissot手表", "iPhone手机", "LV手提包" };
+
+        AbstractIterator iterator;
+        AbstractProductList list;
+
+        list = new ProductList(pNames);
+        iterator = list.getIterator();
+
+        while (!iterator.isLast()) {
+            System.out.println(iterator.getNextItem());
+            iterator.next();
+        }
+
+        System.out.println("--------------------");
+
+        while (!iterator.isFirst()) {
+            System.out.println(iterator.getPreviousItem());
+            iterator.previous();
+        }
 
         assertTrue(true);
     }
