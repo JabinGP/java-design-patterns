@@ -9,7 +9,7 @@ public class ConcreteInvestor implements Investor {
 
     @Override
     public void response(Stock stock) {
-        System.out.println(String.format("提示股民：%s ------ 股票：%s 波动幅度超过5%% ------ 新价格是：%f。", this.name,
-                stock.getStockName(), stock.getPrice()));
+        System.out.printf("提示股民：%s ------ 股票：%s 波动幅度超过5%% ------ 新价格是：%f。\n", this.name, stock.getStockName(),
+                stock.getPrice());
     }
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.jabingp.proxy.BusinessClass;
 import org.jabingp.proxy.LoggerProxy;
+import org.jabingp.state.Account;
 import org.jabingp.proxy.AbstractLog;
 
 import org.jabingp.chainofresponsibility.JavaSearchContext;
@@ -16,14 +17,19 @@ import org.jabingp.command.Command;
 import org.jabingp.command.ExitCommand;
 import org.jabingp.command.FunctionButton;
 import org.jabingp.command.HelpCommand;
+
 import org.jabingp.iterator.AbstractIterator;
 import org.jabingp.iterator.AbstractProductList;
 import org.jabingp.iterator.ProductList;
+
 import org.jabingp.mediator.Button;
 import org.jabingp.mediator.ComboBox;
 import org.jabingp.mediator.ConcreteMediator;
 import org.jabingp.mediator.List;
 import org.jabingp.mediator.TextBox;
+
+import org.jabingp.memento.ChessPlayerClient;
+
 import org.jabingp.observer.ConcreteInvestor;
 import org.jabingp.observer.Investor;
 import org.jabingp.observer.Stock;
@@ -146,5 +152,19 @@ public class AppTest {
         addBT.change();
         System.out.println("-----------------------------");
         list.change();
+    }
+
+    @Test
+    public void testMemento() {
+        ChessPlayerClient.main(null);
+    }
+
+    @Test
+    public void testState() {
+        Account acc = new Account("段誉", 5.0);
+        acc.deposit(100);
+        acc.withdraw(200);
+        acc.deposit(1000);
+        acc.withdraw(2000);
     }
 }
